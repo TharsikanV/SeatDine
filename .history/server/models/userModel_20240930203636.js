@@ -1,6 +1,6 @@
 const mongoose=require('mongoose');
 const validator=require('validator');
-const bcrypt=require('bcrypt');
+// const bcrypt=require('bcrypt');
 const jwt=require('jsonwebtoken');
 // const crypto=require('crypto');
 
@@ -43,10 +43,8 @@ userSchema.pre('save',async function(next){
     this.password=await bcrypt.hash(this.password,10);
 })
 
-userSchema.methods.getJwtToken =function(){
-    return jwt.sign({id:this.id},process.env.JWT_SECRET,{
-        expiresIn:process.env.JWT_EXPIRES_TIME
-    })
+userSchema.methods.getJwtToken = async function(){
+    return 
 }
 
 userSchema.methods.comparePassword=async function(candidatePassword){

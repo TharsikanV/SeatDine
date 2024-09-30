@@ -1,7 +1,6 @@
 const User=require('../models/userModel');
 const bcrypt=require('bcrypt');
 const catchAsyncError=require('../middlewares/catchAsyncError');
-const sendToken = require('../utils/jwt');
 
 
 // User registration route -/api/v1/register
@@ -23,7 +22,7 @@ const registerUser=catchAsyncError(async(req,res)=>{
         // Save the user
         await newUser.save();
 
-       sendToken(newUser,200,res)
+       send
 
     }catch(err){
         console.error(err.message);

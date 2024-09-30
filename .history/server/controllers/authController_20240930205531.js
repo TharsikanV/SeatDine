@@ -23,7 +23,7 @@ const registerUser=catchAsyncError(async(req,res)=>{
         // Save the user
         await newUser.save();
 
-       sendToken(newUser,200,res)
+       sendToken(user,201,r)
 
     }catch(err){
         console.error(err.message);
