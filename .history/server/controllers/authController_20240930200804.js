@@ -1,10 +1,10 @@
 const User=require('../models/userModel');
 const bcrypt=require('bcrypt');
-const catchAsyncError=require('../middlewares/catchAsyncError');
+
 
 
 // User registration route -/api/v1/register
-const registerUser=catchAsyncError(async(req,res)=>{
+const registerUser=async(req,res)=>{
     try{
         const {name,email,password}=req.body;
 
@@ -28,6 +28,6 @@ const registerUser=catchAsyncError(async(req,res)=>{
         console.error(err.message);
         res.status(500).send('Server error');
     }
-});
+};
 
 module.exports =registerUser;
