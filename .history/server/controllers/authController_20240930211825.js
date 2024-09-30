@@ -37,7 +37,7 @@ const loginUser=catchAsyncError(async(req,res,next)=>{
     try{
         const {email,password}=req.body;
         if(!email || !password){
-            return res.status(400).json({msg: 'Please provide email and password'});
+            
         }
 
         // Check for existing user
@@ -45,7 +45,7 @@ const loginUser=catchAsyncError(async(req,res,next)=>{
         if(!user) return res.status(400).json({msg: 'User not found'});
 
         // Check if password matches
-        const isMatch=user.comparePassword(password);
+        const isMatch=await bcrypt.compare(password,user.password);
         if(!isMatch) return res.status(400).json({msg: 'Invalid credentials'});
 
         sendToken(user,200,res)
@@ -57,7 +57,4 @@ const loginUser=catchAsyncError(async(req,res,next)=>{
 });
 
 
-module.exports ={
-    registerUser,
-    loginUser
-};
+module.exports =registerUser;

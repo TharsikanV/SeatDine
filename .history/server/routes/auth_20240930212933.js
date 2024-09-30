@@ -1,6 +1,6 @@
 const {
     registerUser,
-    loginUser
+    
 }=require('../controllers/authController');
 const express=require('express');
 const router=express.Router();
@@ -9,6 +9,6 @@ const router=express.Router();
 
 router.post('/register', registerUser);
 
-router.get('/login',loginUser);
+router.get('/login',);
 
 module.exports=router;

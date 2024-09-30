@@ -33,31 +33,6 @@ const registerUser=catchAsyncError(async(req,res)=>{
 
 // User login route -/api/v1/login
 
-const loginUser=catchAsyncError(async(req,res,next)=>{
-    try{
-        const {email,password}=req.body;
-        if(!email || !password){
-            return res.status(400).json({msg: 'Please provide email and password'});
-        }
-
-        // Check for existing user
-        const user=await User.findOne({email}).select('+password');
-        if(!user) return res.status(400).json({msg: 'User not found'});
-
-        // Check if password matches
-        const isMatch=user.comparePassword(password);
-        if(!isMatch) return res.status(400).json({msg: 'Invalid credentials'});
-
-        sendToken(user,200,res)
-
-    }catch(err){
-        console.error(err.message);
-        res.status(500).send('Server error');
-    }
-});
 
 
-module.exports ={
-    registerUser,
-    loginUser
-};
+module.exports =registerUser;

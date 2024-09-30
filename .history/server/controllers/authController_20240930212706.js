@@ -45,7 +45,7 @@ const loginUser=catchAsyncError(async(req,res,next)=>{
         if(!user) return res.status(400).json({msg: 'User not found'});
 
         // Check if password matches
-        const isMatch=user.comparePassword(password);
+        const isMatch=user.comparePassword(p)
         if(!isMatch) return res.status(400).json({msg: 'Invalid credentials'});
 
         sendToken(user,200,res)

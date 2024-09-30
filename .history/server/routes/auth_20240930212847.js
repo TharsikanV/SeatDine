@@ -1,7 +1,4 @@
-const {
-    registerUser,
-    loginUser
-}=require('../controllers/authController');
+const registerUser=require('../controllers/authController');
 const express=require('express');
 const router=express.Router();
 
