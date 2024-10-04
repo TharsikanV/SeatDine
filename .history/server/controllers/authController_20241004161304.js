@@ -63,21 +63,7 @@ const loginUser=catchAsyncError(async(req,res,next)=>{
 // User logout route -/api/v1/logout
 
 const logoutUser=catchAsyncError(async (req,res,next)=>{
-    try{
-        res.cookie('token',null,{
-            expire:new Date(Date.now()),
-            httpOnly:true
-        })
-        .status(200)
-        .json({
-            success:true,
-            msg:'logged out'
-        })
-    }
-    catch(err){
-        console.error(err.message);
-        res.status(500).send('Server error');
-    }
+    
 })
 
 
@@ -85,6 +71,5 @@ const logoutUser=catchAsyncError(async (req,res,next)=>{
 
 module.exports ={
     registerUser,
-    loginUser,
-    logoutUser
+    loginUser
 };

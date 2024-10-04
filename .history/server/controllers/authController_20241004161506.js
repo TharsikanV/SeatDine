@@ -69,14 +69,7 @@ const logoutUser=catchAsyncError(async (req,res,next)=>{
             httpOnly:true
         })
         .status(200)
-        .json({
-            success:true,
-            msg:'logged out'
-        })
-    }
-    catch(err){
-        console.error(err.message);
-        res.status(500).send('Server error');
+        .
     }
 })
 
@@ -85,6 +78,5 @@ const logoutUser=catchAsyncError(async (req,res,next)=>{
 
 module.exports ={
     registerUser,
-    loginUser,
-    logoutUser
+    loginUser
 };
